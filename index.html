@@ -47,43 +47,34 @@ body{background:#d0d0d0;padding:10px;}
 .popup-item:hover{background:#f0f0f0;}
 .popup-close{background:#ff4444;color:white;padding:5px 10px;text-align:center;cursor:pointer;margin-bottom:5px;}
 
-.footer{margin-top:15px;font-size:12px;line-height:1.6;}
+.footer{margin-top:15px;}
 .footer-row{display:flex;justify-content:space-between;gap:10px;}
 .footer-left,.footer-right{width:48%;background:#e9ecef;padding:6px;border-radius:4px;}
-.footer-title{font-weight:bold;color:#007bff;margin-bottom:4px;}
-.footer a{color:#007bff;text-decoration:none;}
+.footer-title{font-weight:bold;color:#007bff;margin-bottom:4px;font-size:12px;}
 
-.copyright{
-  text-align:center;
-  margin-top:10px;
-  font-size:11px;
+/* 你要的：小字 + 每个一排 */
+.footer-left { font-size:9px; line-height:1.5; }
+.footer-right a {
+  display:block;
+  font-size:9px;
   line-height:1.5;
-  color:#333;
+  white-space:nowrap;
+  margin:1px 0;
 }
-.copyright .link-group {
-  font-size:11px;
-  line-height:1.4;
-  margin-top:4px;
-}
-.copyright a {
-  color:#007bff;
-  text-decoration:none;
-}
+
+.footer-link-line{display:none;}
+.copyright{text-align:center;margin-top:8px;font-size:9px;line-height:1.3;color:#666;}
 
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   body * { visibility: hidden; }
   .label-box, .label-box * { visibility: visible; }
   .label-box {
-    position: relative !important;
-    left: 0 !important; top: 0 !important;
-    width: 100% !important;
-    margin: 0 auto !important;
-    border: 1px solid #000 !important;
-    background: #fff !important;
-    color: #000 !important;
+    position:relative !important; left:0 !important; top:0 !important;
+    width:100% !important; max-width:500px !important; margin:0 auto !important;
+    border:1px solid #000 !important; background:#fff !important; color:#000 !important;
   }
-  @page { margin: 10px; size: auto; }
+  @page { margin:10px; size:auto; }
 }
 </style>
 </head>
@@ -131,40 +122,31 @@ body{background:#d0d0d0;padding:10px;}
     </div>
   </div>
   <div class="buttons">
-    <div class="btn" onclick="window.print()">打印</div>
     <div class="btn" onclick="exportCurrentToExcel()">导出Excel</div>
+    <div class="btn" onclick="window.print()">打印</div>
     <div class="btn" onclick="clearAll()">清空重置</div>
   </div>
-  <div class="footer">
-    <div class="footer-row">
-      <div class="footer-left">
-        <div class="footer-title">沙漠倾城</div>
-        微信：18962500118<br>
-        企鹅：18962500118<br>
-        邮箱：18962500118@qq.com<br>
-        邮箱：674058055@qq.com
-      </div>
-      <div class="footer-right">
-        <div class="footer-title">友情链接（沙漠倾城）</div>
-        <a href="https://smqc.top" target="_blank">沙漠倾城官方音乐网站</a><br>
-        <a href="https://xc.smqc.top" target="_blank">旭辰纺织官方网站</a><br>
-        <a href="https://dy.smqc.top" target="_blank">沙漠倾城标签打印官网</a><br>
-        <a href="https://yx.smqc.top" target="_blank">沙漠倾城官方音乐消消乐</a><br>
-        <a href="https://jsq.smqc.top" target="_blank">沙漠倾城官方音乐计算器</a>
-      </div>
+  
+  <div class="footer-row">
+    <div class="footer-left">
+      <div class="footer-title">沙漠倾城</div>
+      微信：18962500118<br>
+      企鹅：18962500118<br>
+      邮箱：18962500118@qq.com<br>
+      邮箱：674058055@qq.com
     </div>
-    <div class="copyright">
-      © 2026 沙漠倾城标签打印网站<br>
-      本网站免费使用，著作权归属创作者沙漠倾城所有。<br>
-      <div class="link-group">
-        沙漠倾城｜微信/QQ：18962500118<br>
-        <a href="https://smqc.top">https://smqc.top</a>｜
-        <a href="https://xc.smqc.top">https://xc.smqc.top</a><br>
-        <a href="https://dy.smqc.top">https://dy.smqc.top</a>｜
-        <a href="https://yx.smqc.top">https://yx.smqc.top</a>｜
-        <a href="https://jsq.smqc.top">https://jsq.smqc.top</a>
-      </div>
+    <div class="footer-right">
+      <div class="footer-title">友情链接（沙漠倾城）</div>
+      <a href="https://smqc.top" target="_blank">沙漠倾城官方音乐网站</a>
+      <a href="https://xc.smqc.top" target="_blank">旭辰纺织官方网站</a>
+      <a href="https://dy.smqc.top" target="_blank">沙漠倾城标签打印官网</a>
+      <a href="https://yx.smqc.top" target="_blank">沙漠倾城官方音乐消消乐</a>
+      <a href="https://jsq.smqc.top" target="_blank">沙漠倾城官方音乐计算器</a>
     </div>
+  </div>
+  
+  <div class="copyright">
+    © 2026 沙漠倾城标签打印网站 本网站免费使用 著作权归沙漠倾城所有
   </div>
 </div>
 
@@ -176,7 +158,7 @@ body{background:#d0d0d0;padding:10px;}
       2、关键字搜索：输入品名关键词<br>
       3、简编号输入：输入产品编号<br>
       4、改单价：输入价格自动计算<br>
-      5、打印：直接打印标签<br>
+      5、打印：电脑/手机均可直接打印标签<br>
       6、清空重置：恢复初始状态
     </div>
     <div class="modal-close" onclick="closeAllModal()">关闭</div>
@@ -193,11 +175,11 @@ body{background:#d0d0d0;padding:10px;}
       邮箱：18962500118@qq.com<br>
       邮箱：674058055@qq.com<br><br>
       <strong>官方网站（全称+地址）</strong><br>
-      沙漠倾城官方音乐网站：<a href="https://smqc.top">https://smqc.top</a><br>
-      旭辰纺织官方网站：<a href="https://xc.smqc.top">https://xc.smqc.top</a><br>
-      沙漠倾城标签打印官网：<a href="https://dy.smqc.top">https://dy.smqc.top</a><br>
-      沙漠倾城官方音乐消消乐：<a href="https://yx.smqc.top">https://yx.smqc.top</a><br>
-      沙漠倾城官方音乐计算器：<a href="https://jsq.smqc.top">https://jsq.smqc.top</a>
+      沙漠倾城官方音乐网站：<a href="https://smqc.top" target="_blank">https://smqc.top</a><br>
+      旭辰纺织官方网站：<a href="https://xc.smqc.top" target="_blank">https://xc.smqc.top</a><br>
+      沙漠倾城标签打印官网：<a href="https://dy.smqc.top" target="_blank">https://dy.smqc.top</a><br>
+      沙漠倾城官方音乐消消乐：<a href="https://yx.smqc.top" target="_blank">https://yx.smqc.top</a><br>
+      沙漠倾城官方音乐计算器：<a href="https://jsq.smqc.top" target="_blank">https://jsq.smqc.top</a>
     </div>
     <div class="modal-close" onclick="closeAllModal()">关闭</div>
   </div>
@@ -213,10 +195,7 @@ body{background:#d0d0d0;padding:10px;}
 document.oncontextmenu=function(){return false;}
 document.onkeydown=function(e){if(e.key=="F12"){e.preventDefault();return false;}}
 let excelData=[];let headerInfo={title1:'',title2:'',tel:''};
-
-// 已按你的 XCDY 文件夹正确配置路径
-const EXCEL_URL="https://smqcgf.github.io/XCDY/产品规格.xlsx";
-
+const EXCEL_URL="产品规格.xlsx";
 window.onload=loadOnlineExcel();
 
 async function loadOnlineExcel(){
@@ -240,12 +219,9 @@ async function loadOnlineExcel(){
       if(headerInfo.title2)h+=headerInfo.title2;
       if(!h)h='沙漠倾城标签打印系统';
       document.getElementById('labelHeader').innerHTML=h;
-      alert("产品数据加载成功 ✅");
     };
     reader.readAsBinaryString(blob);
-  }catch(err){
-    alert("产品表加载失败，请检查文件是否在XCDY文件夹里");
-  }
+  }catch(err){}
 }
 
 function onSearchInput(){document.getElementById('inputCode').value='';searchByKeyword();}
