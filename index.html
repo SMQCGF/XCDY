@@ -51,8 +51,6 @@ body{background:#d0d0d0;padding:10px;}
 .footer-row{display:flex;justify-content:space-between;gap:10px;}
 .footer-left,.footer-right{width:48%;background:#e9ecef;padding:6px;border-radius:4px;}
 .footer-title{font-weight:bold;color:#007bff;margin-bottom:4px;font-size:12px;}
-
-/* 你要的：小字 + 每个一排 */
 .footer-left { font-size:9px; line-height:1.5; }
 .footer-right a {
   display:block;
@@ -61,7 +59,6 @@ body{background:#d0d0d0;padding:10px;}
   white-space:nowrap;
   margin:1px 0;
 }
-
 .footer-link-line{display:none;}
 .copyright{text-align:center;margin-top:8px;font-size:9px;line-height:1.3;color:#666;}
 
@@ -104,7 +101,7 @@ body{background:#d0d0d0;padding:10px;}
     </div>
     <div class="control-item">
       <div class="control-label">简编号输入</div>
-      <input type="text" class="control-input" id="inputCode" oninput="onCodeInput()">
+      <input type="text" class="control-input" id="inputCode" oninput="onCodeInput(); updateLabel();">
     </div>
     <div class="control-item">
       <div class="control-label">改单价</div>
