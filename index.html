@@ -70,22 +70,18 @@ body{background:#d0d0d0;padding:10px;}
   text-decoration:none;
 }
 
-/* 电脑+手机 通用打印样式 */
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-  body, html { width: 100%; height: auto; margin: 0; padding: 0; }
   body * { visibility: hidden; }
   .label-box, .label-box * { visibility: visible; }
   .label-box {
     position: relative !important;
     left: 0 !important; top: 0 !important;
     width: 100% !important;
-    max-width: 500px !important;
     margin: 0 auto !important;
     border: 1px solid #000 !important;
     background: #fff !important;
     color: #000 !important;
-    box-shadow: none !important;
   }
   @page { margin: 10px; size: auto; }
 }
@@ -125,7 +121,7 @@ body{background:#d0d0d0;padding:10px;}
         <input type="text" class="control-input" id="inputPrice" oninput="updateLabel()" placeholder="价格">
         <select id="taxType" onchange="updateLabel()">
           <option value="含税价">含税价</option>
-          option value="不含税">不含税</option>
+          <option value="不含税">不含税</option>
         </select>
       </div>
       <span class="unit-text">元</span>
@@ -172,7 +168,6 @@ body{background:#d0d0d0;padding:10px;}
   </div>
 </div>
 
-<!-- 说明弹窗 -->
 <div class="modal" id="infoModal">
   <div class="modal-box">
     <div class="modal-title">软件使用说明</div>
@@ -188,7 +183,6 @@ body{background:#d0d0d0;padding:10px;}
   </div>
 </div>
 
-<!-- 联系弹窗（带完整名称+链接） -->
 <div class="modal" id="contactModal">
   <div class="modal-box">
     <div class="modal-title">联系我们</div>
@@ -219,7 +213,10 @@ body{background:#d0d0d0;padding:10px;}
 document.oncontextmenu=function(){return false;}
 document.onkeydown=function(e){if(e.key=="F12"){e.preventDefault();return false;}}
 let excelData=[];let headerInfo={title1:'',title2:'',tel:''};
-const EXCEL_URL="https://raw.githubusercontent.com/smqcgf/smqcgf.github.io/main/产品规格.xlsx";
+
+// 已按你的 XCDY 文件夹正确配置路径
+const EXCEL_URL="https://smqcgf.github.io/XCDY/产品规格.xlsx";
+
 window.onload=loadOnlineExcel();
 
 async function loadOnlineExcel(){
@@ -247,7 +244,7 @@ async function loadOnlineExcel(){
     };
     reader.readAsBinaryString(blob);
   }catch(err){
-    alert("加载失败，请检查 GitHub 链接");
+    alert("产品表加载失败，请检查文件是否在XCDY文件夹里");
   }
 }
 
