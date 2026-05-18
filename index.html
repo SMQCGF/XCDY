@@ -60,7 +60,7 @@ body{background:#d0d0d0;padding:10px;}
   body * { visibility: hidden; }
   .label-box, .label-box * { visibility: visible; }
   .label-box {
-    position:relative !important; left:0 !important; top:0 !important;
+    position:absolute !important; left:0 !important; top:0 !important;
     width:100% !important; max-width:500px !important; margin:0 auto !important;
     border:1px solid #000 !important; background:#fff !important; color:#000 !important;
   }
@@ -224,17 +224,18 @@ function updateLabel(){
     return no==code||no=='XC'+code||no=='xc'+code;
   });
   if(!row){clearAllFields();return;}
-  const baipi=row['克重：']||'';
-  const sepi=row['色坯：']||'';
   
-  // 已按要求修改克重显示逻辑
-  let weightText='-';
-  if(baipi && sepi){
-    weightText=`白坯${baipi}克/色坯${sepi}克`;
-  }else if(baipi){
-    weightText=`白坯${baipi}克`;
-  }else if(sepi){
-    weightText=`色坯${sepi}克`;
+  // 严格按Excel字段读取
+  const baipi = row['克重：'] || '';
+  const sepi = row['色胚：'] || '';
+
+  let weightText = '-';
+  if (baipi && sepi) {
+    weightText = `白坯${baipi}克/色坯${sepi}克`;
+  } else if (baipi) {
+    weightText = `白坯${baipi}克`;
+  } else if (sepi) {
+    weightText = `色坯${sepi}克`;
   }
 
   let finalPrice=priceInput||row['价格：']||'';
