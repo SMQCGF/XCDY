@@ -6,36 +6,50 @@
 <title>沙漠倾城标签打印官网</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:SimHei,"Microsoft YaHei",sans-serif;font-size:14px;}
-body{background:#d0d0d0;padding:3px;} /* 减少2px（≈0.5mm） */
+body{background:#d0d0d0;padding:3px 10px 3px 10px;}
 .wrapper{
-  width:100%;max-width:500px;margin:0 auto;background:#f8f0f0;padding:6px;position:relative;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.15); /* padding减少2px（≈0.5mm） */
+  width:100%;max-width:500px;margin:0 auto;background:#f8f0f0;
+  padding:3px 12px 3px 12px;
+  position:relative;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.15);
 }
-/* 按钮更靠上，减少与下方间隙 */
-.top-inner-right{position:absolute;top:2px;right:6px;display:flex;gap:5px;z-index:99;} /* top减少2px（≈0.5mm） */
+.top-inner-right{position:absolute;top:5px;right:8px;display:flex;gap:5px;z-index:99;}
 .top-btn{background:#007bff;color:#fff;font-size:12px;padding:3px 6px;border-radius:3px;cursor:pointer;font-weight:bold;}
 .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:9999;display:none;}
 .modal-box{background:white;width:90%;max-width:450px;padding:15px;border-radius:8px;max-height:80vh;overflow-y:auto;}
 .modal-title{font-weight:bold;font-size:16px;margin-bottom:8px;text-align:center;}
 .modal-close{background:#ff4444;color:white;padding:5px;text-align:center;cursor:pointer;margin-top:10px;border-radius:4px;}
 .modal-content a{color:#007bff;text-decoration:none;}
-/* 标签区域上移，压缩与按钮的间距 */
-.label-box{border:1px solid #000;background:#ffffff;padding:10px;width:100%;margin-top:15px;margin-bottom:10px;line-height:1.6;border-radius:2px;} /* margin-top减少5px（≈1.3mm） */
-.label-header{text-align:center;font-weight:bold;margin-bottom:5px;min-height:40px;white-space:pre-line;}
-.label-row{display:flex;justify-content:flex-start;border-bottom:1px solid #ccc;padding:3px 0;color:#222;} /* padding减少1px（≈0.26mm） */
+.label-box{border:1px solid #000;background:#ffffff;
+  margin-top:5px;
+  margin-bottom:12px;
+  line-height:1.6;
+  border-radius:2px;
+  position:relative;
+  padding:10px 10px 10px 15px;
+}
+.label-header{
+  text-align:center;
+  font-weight:bold;
+  margin-bottom:5px;
+  min-height:45px; 
+  white-space:pre-line; 
+  padding-top:5px;
+  transform: translateX(-15px);
+}
+.label-row{display:flex;justify-content:flex-start;border-bottom:1px solid #ccc;padding:2px 0;color:#222;}
 .label-row span:first-child{width:70px;}
 .label-row:last-child{border-bottom:none;}
-.controls{width:100%;margin-bottom:8px;} /* margin-bottom减少2px（≈0.5mm） */
+.controls{width:100%;margin-bottom:8px;}
 .control-item{display:flex;align-items:center;margin-bottom:6px;height:30px;}
 .control-label{width:100px;height:30px;line-height:30px;text-align:center;background:#e9ecef;border:1px solid #ced4da;font-weight:bold;flex-shrink:0;}
 .control-input{flex:1;height:30px;border:1px solid #ced4da;background:#fff;padding:0 8px;}
 .unit-text{margin-left:5px;}
-/* 减少提示文字与标签的间距 */
-.note{text-align:center;font-size:12px;margin:4px 0;color:#007bff;font-weight:bold;} /* margin减少2px（≈0.5mm） */
+.note{text-align:center;font-size:12px;margin:8px 0;color:#007bff;font-weight:bold;}
 .note a{color:#007bff;text-decoration:none;font-weight:bold;}
-.buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin-bottom:10px;} /* margin-bottom减少5px（≈1.3mm） */
+.buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%; margin-bottom:6px;}
 .btn{padding:8px 0;text-align:center;border:1px solid #ced4da;background:#ffffff;font-weight:bold;cursor:pointer;border-radius:4px;transition:0.2s;}
 .btn:hover{background:#e9ecef;}
-.excel-area{text-align:center;margin-bottom:2px;} /* margin-bottom减少2px（≈0.5mm） */
+.excel-area{text-align:center;margin-bottom:10px;}
 #excelFile{display:none;}
 .price-row {display:flex;gap:4px;flex:1;height:30px;align-items:center;}
 .price-row input {width:70px;height:30px;border:1px solid #ced4da;padding:0 6px;text-align:center;}
@@ -44,7 +58,7 @@ body{background:#d0d0d0;padding:3px;} /* 减少2px（≈0.5mm） */
 .popup-item{padding:8px 10px;border-bottom:1px solid #ccc;cursor:pointer;}
 .popup-item:hover{background:#f0f0f0;}
 .popup-close{background:#ff4444;color:white;padding:5px 10px;text-align:center;cursor:pointer;margin-bottom:5px;}
-.footer{margin-top:0;}
+.footer{margin-top:15px;}
 .footer-row{display:flex;justify-content:space-between;gap:10px;}
 .footer-left,.footer-right{width:48%;background:#e9ecef;padding:6px;border-radius:4px;}
 .footer-title{font-weight:bold;color:#007bff;margin-bottom:4px;font-size:12px;}
@@ -73,13 +87,16 @@ body{background:#d0d0d0;padding:3px;} /* 减少2px（≈0.5mm） */
 </head>
 <body>
 <div class="wrapper">
-  <!-- 顶上「说明」「联系」按钮完全保持原始样式 -->
   <div class="top-inner-right">
     <div class="top-btn" onclick="showModal('infoModal')">说明</div>
     <div class="top-btn" onclick="showModal('contactModal')">联系</div>
   </div>
   <div class="excel-area">已自动加载在线产品数据 ✅</div>
   <div class="label-box" id="previewLabel">
+    <img src="https://smqcgf.github.io/XCDY/qrcode.png" 
+         alt="旭辰纺织官网" 
+         style="position:absolute; top:5px; right:10px; width:80px; height:80px; border:1px solid #eee; background:#fff; padding:2px;" 
+         onerror="this.style.display='none'">
     <div class="label-header" id="labelHeader"></div>
     <div class="label-row"><span>编号：</span><span id="l-code">-</span></div>
     <div class="label-row"><span>品名：</span><span id="l-name">-</span></div>
@@ -115,13 +132,11 @@ body{background:#d0d0d0;padding:3px;} /* 减少2px（≈0.5mm） */
       <a href="https://dy.smqc.top" target="_blank">沙漠倾城标签打印官网：dy.smqc.top</a>
     </div>
   </div>
-  <!-- 仅保留「打印」「清空重置」按钮，与下方板块留有空隙 -->
   <div class="buttons">
-    <div class="btn" onclick="window.print()">打印</div>
     <div class="btn" onclick="clearAll()">清空重置</div>
+    <div class="btn" onclick="window.print()">打印</div>
   </div>
   
-  <!-- 底部内容完全保留原始样式 -->
   <div class="footer-row">
     <div class="footer-left">
       <div class="footer-title">沙漠倾城</div>
@@ -187,7 +202,7 @@ body{background:#d0d0d0;padding:3px;} /* 减少2px（≈0.5mm） */
 document.oncontextmenu=function(){return false;}
 document.onkeydown=function(e){if(e.key=="F12"){e.preventDefault();return false;}}
 let excelData=[];let headerInfo={title1:'',title2:'',tel:''};
-const EXCEL_URL="产品规格.xlsx";
+const EXCEL_URL="https://smqcgf.github.io/XCDY/产品规格.xlsx";
 window.onload=loadOnlineExcel();
 async function loadOnlineExcel(){
   try{
@@ -250,7 +265,7 @@ function updateLabel(){
   document.getElementById('l-spec').innerText=row['规格：']||'-';
   document.getElementById('l-warp').innerText=row['原料：']||'-';
   document.getElementById('l-weight').innerText=weightText;
-  document.getElementById('l-width').innerText=row['门幅：']?row['门幅：']+'cm':'-';
+  document.getElementById('l-width').innerText=row['门幅：']?'row['门幅：']+'cm':'-';
   document.getElementById('l-price').innerText=priceText;
   document.getElementById('l-note').innerText=row['备注：']||'-';
   document.getElementById('l-tel').innerText=headerInfo.tel||'-';
