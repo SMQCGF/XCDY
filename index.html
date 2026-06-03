@@ -265,7 +265,7 @@ function updateLabel(){
   document.getElementById('l-spec').innerText=row['规格：']||'-';
   document.getElementById('l-warp').innerText=row['原料：']||'-';
   document.getElementById('l-weight').innerText=weightText;
-  document.getElementById('l-width').innerText=row['门幅：']?'row['门幅：']+'cm':'-';
+  document.getElementById('l-width').innerText=row['门幅：']?row['门幅：']+'cm':'-';
   document.getElementById('l-price').innerText=priceText;
   document.getElementById('l-note').innerText=row['备注：']||'-';
   document.getElementById('l-tel').innerText=headerInfo.tel||'-';
