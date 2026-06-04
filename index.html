@@ -27,6 +27,7 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
   position:relative;
   padding:10px 10px 10px 15px;
 }
+/* 【修正】反向移：将之前错误的padding-left改为transform，真正向左移1个字（15px） */
 .label-header{
   text-align:center;
   font-weight:bold;
@@ -34,7 +35,7 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
   min-height:45px; 
   white-space:pre-line; 
   padding-top:5px;
-  transform: translateX(-15px);
+  transform: translateX(-15px); /* 向左偏移15px（约1个字） */
 }
 .label-row{display:flex;justify-content:flex-start;border-bottom:1px solid #ccc;padding:2px 0;color:#222;}
 .label-row span:first-child{width:70px;}
@@ -93,7 +94,7 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
   </div>
   <div class="excel-area">已自动加载在线产品数据 ✅</div>
   <div class="label-box" id="previewLabel">
-    <img src="https://smqcgf.github.io/XCDY/qrcode.png" 
+    <img src="https://smqcgf.github.io/18962500118/qrcode.png" 
          alt="旭辰纺织官网" 
          style="position:absolute; top:5px; right:10px; width:80px; height:80px; border:1px solid #eee; background:#fff; padding:2px;" 
          onerror="this.style.display='none'">
@@ -202,7 +203,7 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
 document.oncontextmenu=function(){return false;}
 document.onkeydown=function(e){if(e.key=="F12"){e.preventDefault();return false;}}
 let excelData=[];let headerInfo={title1:'',title2:'',tel:''};
-const EXCEL_URL="https://smqcgf.github.io/XCDY/产品规格.xlsx";
+const EXCEL_URL="产品规格.xlsx";
 window.onload=loadOnlineExcel();
 async function loadOnlineExcel(){
   try{
