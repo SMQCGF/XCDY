@@ -7,11 +7,14 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:SimHei,"Microsoft YaHei",sans-serif;font-size:14px;}
 body{background:#d0d0d0;padding:3px 10px 3px 10px;}
+
+/* ✅ 主容器：深灰 */
 .wrapper{
-  width:100%;max-width:500px;margin:0 auto;background:#f8f0f0;
+  width:100%;max-width:500px;margin:0 auto;background:#d6d6d6;
   padding:3px 12px 3px 12px;
   position:relative;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.15);
 }
+
 .top-inner-right{position:absolute;top:5px;right:8px;display:flex;gap:5px;z-index:99;}
 .top-btn{background:#007bff;color:#fff;font-size:12px;padding:3px 6px;border-radius:3px;cursor:pointer;font-weight:bold;}
 .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:9999;display:none;}
@@ -27,7 +30,6 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
   position:relative;
   padding:10px 10px 10px 15px;
 }
-/* 【修正】反向移：将之前错误的padding-left改为transform，真正向左移1个字（15px） */
 .label-header{
   text-align:center;
   font-weight:bold;
@@ -35,7 +37,7 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
   min-height:45px; 
   white-space:pre-line; 
   padding-top:5px;
-  transform: translateX(-15px); /* 向左偏移15px（约1个字） */
+  transform: translateX(-15px);
 }
 .label-row{display:flex;justify-content:flex-start;border-bottom:1px solid #ccc;padding:2px 0;color:#222;}
 .label-row span:first-child{width:70px;}
@@ -51,7 +53,6 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
 .btn{padding:8px 0;text-align:center;border:1px solid #ced4da;background:#ffffff;font-weight:bold;cursor:pointer;border-radius:4px;transition:0.2s;}
 .btn:hover{background:#e9ecef;}
 .excel-area{text-align:center;margin-bottom:10px;}
-#excelFile{display:none;}
 .price-row {display:flex;gap:4px;flex:1;height:30px;align-items:center;}
 .price-row input {width:70px;height:30px;border:1px solid #ced4da;padding:0 6px;text-align:center;}
 .price-row select {width:70px;height:30px;border:1px solid #ced4da;padding:0 4px;font-size:12px;}
@@ -71,7 +72,6 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
   white-space:nowrap;
   margin:1px 0;
 }
-.footer-link-line{display:none;}
 .copyright{text-align:center;margin-top:8px;font-size:9px;line-height:1.3;color:#666;}
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
@@ -87,14 +87,17 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
 </style>
 </head>
 <body>
+
 <div class="wrapper">
   <div class="top-inner-right">
     <div class="top-btn" onclick="showModal('infoModal')">说明</div>
     <div class="top-btn" onclick="showModal('contactModal')">联系</div>
   </div>
+
   <div class="excel-area">已自动加载在线产品数据 ✅</div>
+
   <div class="label-box" id="previewLabel">
-    <img src="https://smqcgf.github.io/18962500118/qrcode.png" 
+    <img src="https://smqcgf.github.io/XCDY/qrcode.png" 
          alt="旭辰纺织官网" 
          style="position:absolute; top:5px; right:10px; width:80px; height:80px; border:1px solid #eee; background:#fff; padding:2px;" 
          onerror="this.style.display='none'">
@@ -109,6 +112,7 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
     <div class="label-row"><span>备注：</span><span id="l-note">-</span></div>
     <div class="label-row"><span>联系：</span><span id="l-tel">-</span></div>
   </div>
+
   <div class="controls">
     <div class="control-item">
       <div class="control-label">关键字搜索</div>
@@ -133,11 +137,19 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
       <a href="https://dy.smqc.top" target="_blank">沙漠倾城标签打印官网：dy.smqc.top</a>
     </div>
   </div>
+
+  <!-- 原按钮 -->
   <div class="buttons">
     <div class="btn" onclick="clearAll()">清空重置</div>
     <div class="btn" onclick="window.print()">打印</div>
   </div>
-  
+
+  <!-- ✅ 增加 / 减少 按钮 -->
+  <div class="buttons">
+    <div class="btn" onclick="applyDiscount(0.1)">增加</div>
+    <div class="btn" onclick="applyDiscount(-0.1)">减少</div>
+  </div>
+
   <div class="footer-row">
     <div class="footer-left">
       <div class="footer-title">沙漠倾城</div>
@@ -155,11 +167,13 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
       <a href="https://jsq.smqc.top" target="_blank">沙漠倾城官方音乐计算器</a>
     </div>
   </div>
-  
+
   <div class="copyright">
     © 2026 沙漠倾城标签打印网站 本网站免费使用 著作权归沙漠倾城所有
   </div>
 </div>
+
+<!-- 弹窗 -->
 <div class="modal" id="infoModal">
   <div class="modal-box">
     <div class="modal-title">软件使用说明</div>
@@ -174,6 +188,7 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
     <div class="modal-close" onclick="closeAllModal()">关闭</div>
   </div>
 </div>
+
 <div class="modal" id="contactModal">
   <div class="modal-box">
     <div class="modal-title">联系我们</div>
@@ -183,8 +198,7 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
       企鹅：18962500118<br>
       邮箱：18962500118@qq.com<br>
       邮箱：674058055@qq.com<br><br>
-      <strong>官方网站（全称+地址）</strong>
-      <br>
+      <strong>官方网站</strong><br>
       沙漠倾城官方音乐网站：<a href="https://smqc.top" target="_blank">https://smqc.top</a><br>
       旭辰纺织官方网站：<a href="https://xc.smqc.top" target="_blank">https://xc.smqc.top</a><br>
       沙漠倾城标签打印官网：<a href="https://dy.smqc.top" target="_blank">https://dy.smqc.top</a><br>
@@ -194,17 +208,23 @@ body{background:#d0d0d0;padding:3px 10px 3px 10px;}
     <div class="modal-close" onclick="closeAllModal()">关闭</div>
   </div>
 </div>
+
 <div class="search-popup" id="searchPopup">
   <div class="popup-close" onclick="closePopup()">关闭</div>
   <div id="popupList"></div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 <script>
 document.oncontextmenu=function(){return false;}
 document.onkeydown=function(e){if(e.key=="F12"){e.preventDefault();return false;}}
-let excelData=[];let headerInfo={title1:'',title2:'',tel:''};
+
+let excelData=[];
+let headerInfo={title1:'',title2:'',tel:''};
 const EXCEL_URL="产品规格.xlsx";
+
 window.onload=loadOnlineExcel();
+
 async function loadOnlineExcel(){
   try{
     const res=await fetch(EXCEL_URL);
@@ -215,7 +235,6 @@ async function loadOnlineExcel(){
       const ws=wb.Sheets[wb.SheetNames[0]];
       const json=XLSX.utils.sheet_to_json(ws);
       excelData=json.filter(item=>item['编号：']);
-      headerInfo={title1:'',title2:'',tel:''};
       json.forEach(item=>{
         if(item['抬头1：'])headerInfo.title1=item['抬头1：'];
         if(item['抬头2或地址：'])headerInfo.title2=item['抬头2或地址：'];
@@ -230,11 +249,18 @@ async function loadOnlineExcel(){
     reader.readAsBinaryString(blob);
   }catch(err){}
 }
+
 function onSearchInput(){document.getElementById('inputCode').value='';searchByKeyword();}
 function onCodeInput(){document.getElementById('searchName').value='';}
+
 function showModal(id){closeAllModal();document.getElementById(id).style.display='flex';}
 function closeAllModal(){document.querySelectorAll('.modal').forEach(m=>m.style.display='none');}
-function getToday(){let d=new Date();return d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";}
+
+function getToday(){
+  let d=new Date();
+  return d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";
+}
+
 function updateLabel(){
   const code=document.getElementById('inputCode').value.trim();
   const priceInput=document.getElementById('inputPrice').value.trim();
@@ -245,7 +271,7 @@ function updateLabel(){
     return no==code||no=='XC'+code||no=='xc'+code;
   });
   if(!row){clearAllFields();return;}
-  
+
   const baipi = row['克重：'] || '';
   const sepi = row['色胚：'] || '';
 
@@ -261,6 +287,7 @@ function updateLabel(){
   let finalPrice=priceInput||row['价格：']||'';
   let priceText='-';
   if(finalPrice)priceText=`${taxType}${finalPrice}元（${getToday()}）`;
+
   document.getElementById('l-code').innerText=row['编号：']||'-';
   document.getElementById('l-name').innerText=row['品名：']||'-';
   document.getElementById('l-spec').innerText=row['规格：']||'-';
@@ -271,6 +298,7 @@ function updateLabel(){
   document.getElementById('l-note').innerText=row['备注：']||'-';
   document.getElementById('l-tel').innerText=headerInfo.tel||'-';
 }
+
 function searchByKeyword(){
   const kw=document.getElementById('searchName').value.trim();
   if(!kw||excelData.length===0){closePopup();clearAllFields();return;}
@@ -278,6 +306,7 @@ function searchByKeyword(){
   if(list.length===0){closePopup();clearAllFields();return;}
   showPopup(list);
 }
+
 function showPopup(list){
   const popup=document.getElementById('searchPopup');
   const container=document.getElementById('popupList');
@@ -293,8 +322,10 @@ function showPopup(list){
   });
   popup.style.display='block';
 }
+
 function closePopup(){document.getElementById('searchPopup').style.display='none';}
 function selectItem(code,name){document.getElementById('inputCode').value=code;document.getElementById('searchName').value=name;closePopup();updateLabel();}
+
 function clearAllFields(){
   document.getElementById('l-code').innerText='-';
   document.getElementById('l-name').innerText='-';
@@ -306,6 +337,7 @@ function clearAllFields(){
   document.getElementById('l-note').innerText='-';
   document.getElementById('l-tel').innerText='-';
 }
+
 function clearAll(){
   document.getElementById('inputCode').value='';
   document.getElementById('inputPrice').value='';
@@ -313,6 +345,32 @@ function clearAll(){
   document.getElementById('taxType').value='含税价';
   clearAllFields();
 }
+
+/* ✅ 增加 / 减少（每按一次 ±0.1 元） */
+function applyDiscount(amount) {
+  const priceInput = document.getElementById('inputPrice');
+  let currentPrice = parseFloat(priceInput.value);
+
+  if (isNaN(currentPrice)) {
+    const code = document.getElementById('inputCode').value.trim();
+    if (!code || excelData.length === 0) return;
+
+    const row = excelData.find(item => {
+      const no = item['编号：'] || '';
+      return no == code || no == 'XC' + code || no == 'xc' + code;
+    });
+
+    if (!row || !row['价格：']) return;
+    currentPrice = parseFloat(row['价格：']);
+  }
+
+  if (isNaN(currentPrice)) return;
+
+  const newPrice = Math.max(0, currentPrice + amount);
+  priceInput.value = newPrice.toFixed(2);
+  updateLabel();
+}
 </script>
+
 </body>
 </html>
