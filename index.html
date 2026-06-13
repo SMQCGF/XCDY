@@ -250,8 +250,19 @@ async function loadOnlineExcel(){
   }catch(err){}
 }
 
-function onSearchInput(){document.getElementById('inputCode').value='';searchByKeyword();}
-function onCodeInput(){document.getElementById('searchName').value='';}
+/* ✅ 搜索 / 编号输入时，重置改单价和含税状态 */
+function onSearchInput(){
+  document.getElementById('inputCode').value='';
+  document.getElementById('inputPrice').value='';
+  document.getElementById('taxType').value='含税价';
+  searchByKeyword();
+}
+
+function onCodeInput(){
+  document.getElementById('searchName').value='';
+  document.getElementById('inputPrice').value='';
+  document.getElementById('taxType').value='含税价';
+}
 
 function showModal(id){closeAllModal();document.getElementById(id).style.display='flex';}
 function closeAllModal(){document.querySelectorAll('.modal').forEach(m=>m.style.display='none');}
